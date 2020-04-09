@@ -8,7 +8,7 @@ def validate_compact(jws: bytes, validate_jose_header: JOSEValidatorFn) -> JWSPa
     if len(parts) != 3:
         raise ValueError("invalid compact jws")
 
-    encoded_payload_bytes = parts[1]    
+    encoded_payload_bytes = parts[1]
     try:
         # todo: line breaks?
         # 5.2.2, 5.2.6, 5.2.7
