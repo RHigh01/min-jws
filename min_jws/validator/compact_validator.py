@@ -27,7 +27,8 @@ def validate_compact(jws: bytes, validate_jose_header: JOSEValidatorFn) -> JWSPa
     # 5.2.5
     alg_fn = validate_jose_header(jose_header)
     signing_input = gen_signing_input_bytes(header=b64_utf8(jose_header), payload=custom_urlsafe_b64encode(payload_bytes))
-
+    encoded_payload_bytes = payload
+    
     # 5.2.8
     signature = custom_urlsafe_b64encode(alg_fn(signing_input))
     if parts[2] != signature:
